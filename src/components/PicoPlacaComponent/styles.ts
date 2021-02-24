@@ -2,13 +2,13 @@ import styled from "styled-components";
 import { COLOR_PALETTE } from "../../common/colors";
 
 export const InputField = styled.div`
-  margin: 32px;
   display: flex;
-  height: 40px;
+  margin: 16px;
+  flex-wrap: wrap;
 `;
 
 export const InputContainer = styled.div`
-  margin: 0 0 0 8px;
+  margin: 10px 0 10px 8px;
   display: flex;
   height: 40px;
   justify-content: center;
@@ -22,7 +22,8 @@ export const InputContainer = styled.div`
 
 export const SubmitButton = styled.span`
   color: ${COLOR_PALETTE.GREEN};
-  margin: 0 0 0 10px;
+  height: 40px;
+  margin: 10px 0 10px 8px;
   text-transform: uppercase;
   padding: 8px 22px;
   font-size: 20px;
@@ -33,6 +34,7 @@ export const SubmitButton = styled.span`
 
 export const InputBox = styled.div`
   input {
+    width: 100px;
     font-size: 16px;
     height: 30px;
     margin-left: 5px;
