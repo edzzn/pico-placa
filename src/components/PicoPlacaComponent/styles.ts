@@ -51,3 +51,9 @@ export const TimePickerContainer = styled.div`
     border: none;
   }
 `;
+
+export const WarningMessage = styled.div`
+  margin-top: 30px;
+  padding: 0 16px;
+  color: ${COLOR_PALETTE.RED};
+`;

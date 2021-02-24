@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PicoPlacaComponent } from "../../components/PicoPlacaComponent";
+import PicoPlacaComponent from "../../components/PicoPlacaComponent";
 import PicoPlacaState, { IsPicoPlacaState } from "./components/PicoPlacaState";
 import { PageContainer, PicoPlacaContainer } from "./styles";
 

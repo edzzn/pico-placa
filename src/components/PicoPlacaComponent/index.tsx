@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DatePicker from "react-date-picker";
 import InputMask from "react-input-mask";
 import TimePicker, { TimePickerValue } from "react-time-picker";
@@ -11,6 +11,7 @@ import {
   InputField,
   SubmitButton,
   TimePickerContainer,
+  WarningMessage,
 } from "./styles";
 
 export interface PicoPlacaComponentProps {
@@ -23,48 +24,66 @@ export interface PicoPlacaComponentProps {
 
   onSubmit: () => void;
 }
+function PicoPlacaComponent(props: PicoPlacaComponentProps) {
+  const [isFormComplete, setFormComplete] = useState<boolean | null>(null);
 
-export class PicoPlacaComponent extends React.Component<PicoPlacaComponentProps> {
-  handleCarIdChange = (e: any) => {
+  const handleCarIdChange = (e: any) => {
     if (e && e.target && e.target.value) {
-      this.props.onCarIdChange(e.target.value.toUpperCase());
+      props.onCarIdChange(e.target.value.toUpperCase());
     } else {
-      this.props.onCarIdChange("");
+      props.onCarIdChange("");
     }
   };
 
-  handleTimePickerChange = (time: TimePickerValue) => {
-    this.props.onTimeChange(time?.toString());
+  const handleTimePickerChange = (time: TimePickerValue) => {
+    props.onTimeChange(time?.toString());
   };
 
-  handleDateChange = (date: Date | Date[]) => {
+  const handleDateChange = (date: Date | Date[]) => {
     if (Array.isArray(date)) {
-      this.props.onDateChange(date[0]);
+      props.onDateChange(date[0]);
     } else {
-      this.props.onDateChange(date);
+      props.onDateChange(date);
     }
   };
 
-  onKeyPress = (event: any) => {
+  const onKeyPress = (event: any) => {
     if (event && event.key) {
       switch (event.key) {
         case KEYS.ENTER:
-          this.props.onSubmit();
+          onHandleSubmit();
           break;
       }
     }
   };
 
-  render() {
-    return (
-      <InputField onKeyDown={this.onKeyPress}>
+  const onHandleSubmit = () => {
+    if (
+      props.carId &&
+      !props.carId.split("").includes("_") &&
+      props.time &&
+      props.date
+    ) {
+      setFormComplete(true);
+      props.onSubmit();
+    } else {
+      setFormComplete(false);
+    }
+  };
+
+  return (
+    <>
+      {isFormComplete === false && (
+        <WarningMessage>{PICO_PLACA_COMPONENT.WARNING_MESSAGE}</WarningMessage>
+      )}
+      <InputField onKeyDown={onKeyPress}>
         <InputContainer>
           <InputBox>
             <InputMask
               placeholder={PICO_PLACA_COMPONENT.CAR_ID_PLACEHOLDER}
               mask={EC_CAR_ID_FORMAT}
-              value={this.props.carId}
-              onChange={this.handleCarIdChange}
+              value={props.carId}
+              onChange={handleCarIdChange}
             />
           </InputBox>
         </InputContainer>
@@ -72,8 +91,8 @@ export class PicoPlacaComponent extends React.Component<PicoPlacaComponentProps>
         <InputContainer>
           <DatePickerContainer>
             <DatePicker
-              onChange={this.handleDateChange}
-              value={this.props.date}
+              onChange={handleDateChange}
+              value={props.date}
               locale="es-EC"
             />
           </DatePickerContainer>
@@ -81,19 +100,19 @@ export class PicoPlacaComponent extends React.Component<PicoPlacaComponentProps>
         <InputContainer>
           <TimePickerContainer>
             <TimePicker
-              onChange={this.handleTimePickerChange}
-              value={this.props.time}
+              onChange={handleTimePickerChange}
+              value={props.time}
               locale="es-EC"
               disableClock={true}
             />
           </TimePickerContainer>
         </InputContainer>
-        <SubmitButton onClick={() => this.props.onSubmit()}>
+        <SubmitButton onClick={() => onHandleSubmit()}>
           {PICO_PLACA_COMPONENT.SEND_FORM}
         </SubmitButton>
       </InputField>
-    );
-  }
+    </>
+  );
 }
 
 export default PicoPlacaComponent;
