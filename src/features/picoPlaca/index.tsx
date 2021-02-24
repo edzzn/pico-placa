@@ -16,8 +16,12 @@ function PicoPlaca() {
   const [carId, setCarId] = useState<string>("");
   const currentDate = new Date();
   const [date, setDate] = useState<Date>(currentDate);
+  const currentMinutes =
+    currentDate.getMinutes() > 10
+      ? currentDate.getMinutes().toString()
+      : `0${currentDate.getMinutes()}`;
   const [time, setTime] = useState<string>(
-    `${currentDate.getHours()}:${currentDate.getMinutes()}`
+    `${currentDate.getHours()}:${currentMinutes}`
   );
   const [isPicoPlaca, setIsPicoPlaca] = useState<IsPicoPlacaState>(
     IsPicoPlacaState.UNDEFINED

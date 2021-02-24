@@ -1,6 +1,7 @@
 import { createBrowserHistory } from "history";
 import React from "react";
 import { Route, Router, Switch } from "react-router-dom";
+import Footer from "./components/Footer";
 import NavBarComponent from "./components/Navbar";
 import About from "./features/about";
 import PicoPlaca from "./features/picoPlaca";
@@ -11,15 +12,17 @@ const history = createBrowserHistory();
 function App() {
   return (
     <AppContainer>
-      <NavBarComponent />
-      <AppContent>
-        <Router history={history}>
+      <Router history={history}>
+        <NavBarComponent />
+        <AppContent>
           <Switch>
             <Route path="/about" component={About} />
             <Route path="/" component={PicoPlaca} />
           </Switch>
-        </Router>
-      </AppContent>
+
+          <Footer />
+        </AppContent>
+      </Router>
     </AppContainer>
   );
 }

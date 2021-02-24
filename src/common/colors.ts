@@ -1,5 +1,6 @@
 export const COLOR_PALETTE = {
   BLUE: "#204ecf",
+  GREY: "#808080",
   LIGHT_GREY: "#eaeaea",
   GREEN: "#49c5b6",
   LIGHT_GREEN: "#6de3d4",

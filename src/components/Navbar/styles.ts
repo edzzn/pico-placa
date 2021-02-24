@@ -12,6 +12,10 @@ export const Navbar = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${COLOR_PALETTE.GREEN};
   letter-spacing: 0.3em;
+
+  a {
+    text-decoration: none;
+    color: ${COLOR_PALETTE.GREEN};
+  }
 `;

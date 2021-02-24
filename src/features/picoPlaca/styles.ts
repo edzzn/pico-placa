@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { COLOR_PALETTE } from "../../common/colors";
 
 export const PageContainer = styled.div`
-  max-width: 60%;
+  max-width: 90%;
   width: 1020px;
-  margin-inline: auto;
+  margin: 30px auto;
 `;
 
 export const PicoPlacaContainer = styled.div`
