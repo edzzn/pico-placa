@@ -1,1 +1,6 @@
 export const APP_NAME = "PICO Y PLACA";
+
+export const PICO_PLACA_COMPONENT = {
+  CAR_ID_PLACEHOLDER: "ACD-0101",
+  SEND_FORM: "GO",
+};
