@@ -4,6 +4,7 @@ import InputMask from "react-input-mask";
 import TimePicker, { TimePickerValue } from "react-time-picker";
 import { EC_CAR_ID_FORMAT, KEYS } from "../../common/constants";
 import { PICO_PLACA_COMPONENT } from "../../common/texts";
+import { TEST_IDS } from "../../__testsUtils__/test_ids";
 import {
   DatePickerContainer,
   InputBox,
@@ -80,6 +81,7 @@ function PicoPlacaComponent(props: PicoPlacaComponentProps) {
         <InputContainer>
           <InputBox>
             <InputMask
+              data-testid={TEST_IDS.CAR_ID_INPUT}
               placeholder={PICO_PLACA_COMPONENT.CAR_ID_PLACEHOLDER}
               mask={EC_CAR_ID_FORMAT}
               value={props.carId}
@@ -87,9 +89,9 @@ function PicoPlacaComponent(props: PicoPlacaComponentProps) {
             />
           </InputBox>
         </InputContainer>
-        <InputContainer></InputContainer>
+
         <InputContainer>
-          <DatePickerContainer>
+          <DatePickerContainer data-testid={TEST_IDS.DATE_PICKER_CONTAINER}>
             <DatePicker
               onChange={handleDateChange}
               value={props.date}
@@ -98,7 +100,7 @@ function PicoPlacaComponent(props: PicoPlacaComponentProps) {
           </DatePickerContainer>
         </InputContainer>
         <InputContainer>
-          <TimePickerContainer>
+          <TimePickerContainer data-testid={TEST_IDS.TIME_PICKER_CONTAINER}>
             <TimePicker
               onChange={handleTimePickerChange}
               value={props.time}
@@ -107,7 +109,10 @@ function PicoPlacaComponent(props: PicoPlacaComponentProps) {
             />
           </TimePickerContainer>
         </InputContainer>
-        <SubmitButton onClick={() => onHandleSubmit()}>
+        <SubmitButton
+          onClick={() => onHandleSubmit()}
+          data-testid={TEST_IDS.GO_BUTTON}
+        >
           {PICO_PLACA_COMPONENT.SEND_FORM}
         </SubmitButton>
       </InputField>

@@ -50,6 +50,7 @@
     "@types/react-input-mask": "^3.0.0",
     "@types/react-router-dom": "^5.1.7",
     "@types/react-time-picker": "^4.0.1",
-    "@types/styled-components": "^5.1.7"
+    "@types/styled-components": "^5.1.7",
+    "jest-canvas-mock": "^2.3.1"
   }
 }
