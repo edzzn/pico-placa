@@ -42,7 +42,11 @@ class About extends React.Component<{}, {}> {
           <br />
           <p>
             Es posible obtener más información en el siguiente enlace:{" "}
-            <a href="https://github.com/edzzn/pico-placa" target="_blank">
+            <a
+              href="https://github.com/edzzn/pico-placa"
+              rel="noreferrer"
+              target="_blank"
+            >
               github.com/edzzn/pico-placa
             </a>
           </p>
