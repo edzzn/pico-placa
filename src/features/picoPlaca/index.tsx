@@ -2,7 +2,7 @@ import * as React from "react";
 
 class PicoPlaca extends React.Component<{}, {}> {
   render() {
-    return <div>Component</div>;
+    return <div>PicoPlacaPage Component</div>;
   }
 }
 
